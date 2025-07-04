@@ -41,6 +41,33 @@ func TestReturnAmountFromHigherTax(t *testing.T) {
 	})
 }
 
+func TestReturnAmountFromVat(t *testing.T) {
+	t.Run("Getting amount from VAT threshold", func(t *testing.T) {
+		sum := ReturnAmountFromVat(40000)
+		want := 2500.0
+		returnSuccessOrFail(t, sum, want)
+	})
+	t.Run("Getting over Threshold", func(t *testing.T) {
+		sum := ReturnAmountFromVat(50000)
+		want := 0.0
+		returnSuccessOrFail(t, sum, want)
+	})
+}
+
+func TestReturnVatOwed(t *testing.T) {
+	t.Run("Getting owed VAT amount", func(t *testing.T) {
+		sum := ReturnVatOwed(50000)
+		want := 50000 * 0.135
+		returnSuccessOrFail(t, sum, want)
+	})
+}
+
+func TestReturnVatInformation(t *testing.T) {
+	t.Run("Returning VAT information", func(t *testing.T) {
+		fmt.Println(ReturnVatInformation(40000))
+	})
+}
+
 func returnSuccessOrFail(t testing.TB, sum, want float64) string {
 	fmt.Printf("Succusfully returned %v \n", sum)
 	if sum != want {
