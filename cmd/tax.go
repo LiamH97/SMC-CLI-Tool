@@ -4,8 +4,10 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
+	"github.com/LiamH97/SMC-CLI-Tool/internal"
 	"github.com/spf13/cobra"
-	"github.com/LiamH97/SMC-CLI-Tool/internal/app"
+	"strconv"
 )
 
 // taxCmd represents the tax command
@@ -19,7 +21,9 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		taxOwed := tax.
+		earnings, _ := strconv.ParseFloat(args[0], 64)
+		taxOwed := internal.ReturnOwedTax(earnings)
+		fmt.Printf("Your owed tax for the year is %v", taxOwed)
 	},
 }
 
