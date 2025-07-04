@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/LiamH97/SMC-CLI-Tool/internal"
+	"github.com/LiamH97/SMC-CLI-Tool/smc/internal"
 	"github.com/spf13/cobra"
 	"strconv"
 )
