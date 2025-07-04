@@ -17,7 +17,13 @@ var taxCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		earnings, _ := strconv.ParseFloat(args[0], 64)
 		taxOwed := internal.ReturnOwedTax(earnings)
+		diffFromHigherBracket, _ := internal.ReturnAmountFromHigherBracket(earnings)
+		amountOverBracket := earnings - 44000
 		fmt.Printf("Your owed tax for the year is %v \n", taxOwed)
+		if diffFromHigherBracket != 0 {
+			fmt.Printf("You are %v away from the higher bracket of tax \n", diffFromHigherBracket)
+		}
+		fmt.Printf("You are already paying %v of your income at the higher rate \n", amountOverBracket)
 	},
 }
 

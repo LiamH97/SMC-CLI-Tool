@@ -35,7 +35,7 @@ func ReturnHigherRateTax(earnings float64) float64 {
 
 func ReturnAmountFromHigherBracket(earnings float64) (float64, error) {
 	if earnings > standardTaxCutOff {
-		log.Println("Your earnings are over the standard cutoff")
+		log.Println("Your earnings are over the standard tax cutoff")
 		return 0, errors.New("earnings exceed the standard tax cutoff")
 	}
 
